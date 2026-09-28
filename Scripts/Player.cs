@@ -1,0 +1,19 @@
+using Godot;
+using System;
+
+public partial class Player : CharacterBody2D
+{
+	[Export] public float Speed = 300.0f;
+
+    public override void _PhysicsProcess(double delta)
+    {
+        Vector2 direction = Vector2.Zero;
+        if (Input.IsActionPressed("move_left")) direction.X -= 1;
+        if (Input.IsActionPressed("move_right")) direction.X += 1;
+        if (Input.IsActionPressed("move_up")) direction.Y -= 1;
+        if (Input.IsActionPressed("move_down")) direction.Y += 1;
+
+        Velocity = direction.Normalized() * Speed;
+        MoveAndSlide();
+    }
+}
