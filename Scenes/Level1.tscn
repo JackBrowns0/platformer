@@ -26,7 +26,7 @@ color = Color(0.19044772, 0.60583395, 0, 1)
 polygon = PackedVector2Array(-640, -20, 640, -20, 640, 20, -640, 20)
 
 [node name="Platform1" type="StaticBody2D" parent="." unique_id=1603892947]
-position = Vector2(280, 560)
+position = Vector2(892, 185)
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1" unique_id=381199936]
@@ -37,7 +37,7 @@ color = Color(7.70092e-07, 0.57925713, 0.5857518, 1)
 polygon = PackedVector2Array(-80, -10, 80, -10, 80, 10, -80, 10)
 
 [node name="Platform2" type="StaticBody2D" parent="." unique_id=1932882518]
-position = Vector2(480, 470)
+position = Vector2(1185, 108)
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" unique_id=2028934979]
@@ -48,7 +48,7 @@ color = Color(7.70092e-07, 0.57925713, 0.5857518, 1)
 polygon = PackedVector2Array(-80, -10, 80, -10, 80, 10, -80, 10)
 
 [node name="Platform3" type="StaticBody2D" parent="." unique_id=1650309853]
-position = Vector2(680, 380)
+position = Vector2(634, 315)
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" unique_id=1474357851]
@@ -58,24 +58,46 @@ shape = SubResource("RectangleShape2D_htlxk")
 color = Color(7.70092e-07, 0.57925713, 0.5857518, 1)
 polygon = PackedVector2Array(-80, -10, 80, -10, 80, 10, -80, 10)
 
+[node name="Platform4" type="StaticBody2D" parent="." unique_id=1393788084]
+position = Vector2(961, 430)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4" unique_id=887658070]
+shape = SubResource("RectangleShape2D_htlxk")
+
+[node name="Visual" type="Polygon2D" parent="Platform4" unique_id=755451536]
+color = Color(7.70092e-07, 0.57925713, 0.5857518, 1)
+polygon = PackedVector2Array(-80, -10, 80, -10, 80, 10, -80, 10)
+
+[node name="Platform5" type="StaticBody2D" parent="." unique_id=255998403]
+position = Vector2(675, 533)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform5" unique_id=1050649942]
+shape = SubResource("RectangleShape2D_htlxk")
+
+[node name="Visual" type="Polygon2D" parent="Platform5" unique_id=99993383]
+color = Color(7.70092e-07, 0.57925713, 0.5857518, 1)
+polygon = PackedVector2Array(-80, -10, 80, -10, 80, 10, -80, 10)
+
 [node name="Coin1" parent="." unique_id=52723625 instance=ExtResource("2_q12u6")]
-position = Vector2(150, 600)
+position = Vector2(1152, 314)
 
 [node name="Coin2" parent="." unique_id=2144373522 instance=ExtResource("2_q12u6")]
-position = Vector2(280, 525)
+position = Vector2(634, 274)
 
 [node name="Coin3" parent="." unique_id=358485275 instance=ExtResource("2_q12u6")]
-position = Vector2(600, 600)
+position = Vector2(676, 486)
 
 [node name="Coin4" parent="." unique_id=262296398 instance=ExtResource("2_q12u6")]
-position = Vector2(1050, 600)
+position = Vector2(961, 377)
 
 [node name="Gem" parent="." unique_id=1257390529 instance=ExtResource("2_q12u6")]
 modulate = Color(0.10980392, 0.654902, 0.9843137, 1)
-position = Vector2(480, 435)
+position = Vector2(890, 142)
 Type = 1
 
 [node name="Key" parent="." unique_id=1826674637 instance=ExtResource("2_q12u6")]
 modulate = Color(1, 0.22352941, 0, 1)
-position = Vector2(680, 345)
+position = Vector2(1185, 60)
 Type = 2
