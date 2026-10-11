@@ -1,0 +1,15 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://Scenes/Spike.cs" id="1_spike"]
+
+[node name="Spike" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_spike")
+
+[node name="Hitbox" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-11, 12, 0, -8, 11, 12)
+
+[node name="Visual" type="Polygon2D" parent="."]
+color = Color(0.88, 0.08, 0.2, 1)
+polygon = PackedVector2Array(-16, 14, 0, -14, 16, 14)

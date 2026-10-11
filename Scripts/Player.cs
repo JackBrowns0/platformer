@@ -7,8 +7,8 @@ public partial class Player : CharacterBody2D
 {
 
 	[Export] public float Speed = 300.0f;
-    [Export] public float Gravity = 1200.0f;
-    [Export] public float JumpVelocity = -550.0f;
+    [Export] public float Gravity = 2200.0f;
+    [Export] public float JumpVelocity = -630.0f;
 
     public int Score { get; private set; } = 0;
     public bool HasKey { get; private set; } = false;

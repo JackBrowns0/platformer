@@ -1,103 +1,328 @@
 [gd_scene format=3 uid="uid://ch7lxc3ysrljr"]
 
 [ext_resource type="PackedScene" uid="uid://pbmoqjvodepq" path="res://Scenes/Player.tscn" id="1_2llne"]
+[ext_resource type="Script" uid="uid://c6un00njwyky1" path="res://Scenes/Level.cs" id="1_joc8x"]
 [ext_resource type="PackedScene" uid="uid://wfjvoibvumck" path="res://Scenes/Pickup.tscn" id="2_q12u6"]
+[ext_resource type="PackedScene" path="res://Scenes/Spike.tscn" id="3_spike"]
+[ext_resource type="Texture2D" uid="uid://bqce3dd3qwq25" path="res://Art/Background.png" id="4_bg"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g36yv"]
+[sub_resource type="RectangleShape2D" id="Shape_ground"]
+size = Vector2(1280, 80)
+
+[sub_resource type="RectangleShape2D" id="Shape_wallv"]
+size = Vector2(40, 720)
+
+[sub_resource type="RectangleShape2D" id="Shape_ceil"]
 size = Vector2(1280, 40)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_htlxk"]
+[sub_resource type="RectangleShape2D" id="Shape_p160"]
 size = Vector2(160, 20)
 
+[sub_resource type="RectangleShape2D" id="Shape_p112"]
+size = Vector2(112, 20)
+
+[sub_resource type="RectangleShape2D" id="Shape_p150"]
+size = Vector2(150, 20)
+
+[sub_resource type="RectangleShape2D" id="Shape_door"]
+size = Vector2(48, 100)
+
 [node name="Level1" type="Node2D" unique_id=1272779826]
+script = ExtResource("1_joc8x")
+
+[node name="Background" type="CanvasLayer" parent="." unique_id=1674374126]
+layer = -1
+
+[node name="Image" type="TextureRect" parent="Background" unique_id=1957344453]
+texture_filter = 1
+offset_right = 1280.0
+offset_bottom = 720.0
+texture = ExtResource("4_bg")
+expand_mode = 1
 
 [node name="Player" parent="." unique_id=261775768 instance=ExtResource("1_2llne")]
 position = Vector2(80, 570)
 
-[node name="Ground" type="StaticBody2D" parent="." unique_id=1503474561]
-position = Vector2(640, 660)
+[node name="Ground" type="StaticBody2D" parent="." unique_id=2085619259]
+position = Vector2(640, 680)
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1154854653]
-shape = SubResource("RectangleShape2D_g36yv")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=1771538108]
+shape = SubResource("Shape_ground")
 
-[node name="Visual" type="Polygon2D" parent="Ground" unique_id=376956809]
+[node name="Visual" type="Polygon2D" parent="Ground" unique_id=175601740]
 color = Color(0.19044772, 0.60583395, 0, 1)
+polygon = PackedVector2Array(-640, -40, 640, -40, 640, 40, -640, 40)
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=1044805260]
+position = Vector2(20, 360)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=1912242102]
+shape = SubResource("Shape_wallv")
+
+[node name="Visual" type="Polygon2D" parent="WallLeft" unique_id=756389801]
+color = Color(0.1, 0.1, 0.13, 1)
+polygon = PackedVector2Array(-20, -360, 20, -360, 20, 360, -20, 360)
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=23658441]
+position = Vector2(1260, 360)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1418571533]
+shape = SubResource("Shape_wallv")
+
+[node name="Visual" type="Polygon2D" parent="WallRight" unique_id=1223922214]
+color = Color(0.1, 0.1, 0.13, 1)
+polygon = PackedVector2Array(-20, -360, 20, -360, 20, 360, -20, 360)
+
+[node name="Ceiling" type="StaticBody2D" parent="." unique_id=491915739]
+position = Vector2(640, 20)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling" unique_id=1692673612]
+shape = SubResource("Shape_ceil")
+
+[node name="Visual" type="Polygon2D" parent="Ceiling" unique_id=280556901]
+color = Color(0.1, 0.1, 0.13, 1)
 polygon = PackedVector2Array(-640, -20, 640, -20, 640, 20, -640, 20)
 
-[node name="Platform1" type="StaticBody2D" parent="." unique_id=1603892947]
-position = Vector2(892, 185)
+[node name="Platform1" type="StaticBody2D" parent="." unique_id=676519934]
+position = Vector2(280, 558)
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1" unique_id=381199936]
-shape = SubResource("RectangleShape2D_htlxk")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1" unique_id=410508231]
+shape = SubResource("Shape_p160")
 
-[node name="Visual" type="Polygon2D" parent="Platform1" unique_id=182095459]
+[node name="Visual" type="Polygon2D" parent="Platform1" unique_id=414847548]
 color = Color(7.70092e-07, 0.57925713, 0.5857518, 1)
 polygon = PackedVector2Array(-80, -10, 80, -10, 80, 10, -80, 10)
 
-[node name="Platform2" type="StaticBody2D" parent="." unique_id=1932882518]
-position = Vector2(1185, 108)
+[node name="Platform2" type="StaticBody2D" parent="." unique_id=2104488330]
+position = Vector2(470, 472)
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" unique_id=2028934979]
-shape = SubResource("RectangleShape2D_htlxk")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2" unique_id=261715239]
+shape = SubResource("Shape_p112")
 
-[node name="Visual" type="Polygon2D" parent="Platform2" unique_id=1905485629]
+[node name="Visual" type="Polygon2D" parent="Platform2" unique_id=550627013]
+color = Color(7.70092e-07, 0.57925713, 0.5857518, 1)
+polygon = PackedVector2Array(-56, -10, 56, -10, 56, 10, -56, 10)
+
+[node name="Platform3" type="StaticBody2D" parent="." unique_id=1036329557]
+position = Vector2(650, 386)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" unique_id=128327944]
+shape = SubResource("Shape_p112")
+
+[node name="Visual" type="Polygon2D" parent="Platform3" unique_id=397864949]
+color = Color(7.70092e-07, 0.57925713, 0.5857518, 1)
+polygon = PackedVector2Array(-56, -10, 56, -10, 56, 10, -56, 10)
+
+[node name="Platform4" type="StaticBody2D" parent="." unique_id=1402847007]
+position = Vector2(840, 300)
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4" unique_id=387253768]
+shape = SubResource("Shape_p160")
+
+[node name="Visual" type="Polygon2D" parent="Platform4" unique_id=156878206]
 color = Color(7.70092e-07, 0.57925713, 0.5857518, 1)
 polygon = PackedVector2Array(-80, -10, 80, -10, 80, 10, -80, 10)
 
-[node name="Platform3" type="StaticBody2D" parent="." unique_id=1650309853]
-position = Vector2(634, 315)
+[node name="Platform5" type="StaticBody2D" parent="." unique_id=782564320]
+position = Vector2(1010, 214)
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3" unique_id=1474357851]
-shape = SubResource("RectangleShape2D_htlxk")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform5" unique_id=1770802553]
+shape = SubResource("Shape_p112")
 
-[node name="Visual" type="Polygon2D" parent="Platform3" unique_id=486948276]
+[node name="Visual" type="Polygon2D" parent="Platform5" unique_id=546941169]
 color = Color(7.70092e-07, 0.57925713, 0.5857518, 1)
-polygon = PackedVector2Array(-80, -10, 80, -10, 80, 10, -80, 10)
+polygon = PackedVector2Array(-56, -10, 56, -10, 56, 10, -56, 10)
 
-[node name="Platform4" type="StaticBody2D" parent="." unique_id=1393788084]
-position = Vector2(961, 430)
+[node name="Platform6" type="StaticBody2D" parent="." unique_id=1071711495]
+position = Vector2(1165, 140)
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4" unique_id=887658070]
-shape = SubResource("RectangleShape2D_htlxk")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform6" unique_id=2026173924]
+shape = SubResource("Shape_p150")
 
-[node name="Visual" type="Polygon2D" parent="Platform4" unique_id=755451536]
+[node name="Visual" type="Polygon2D" parent="Platform6" unique_id=2071456989]
 color = Color(7.70092e-07, 0.57925713, 0.5857518, 1)
-polygon = PackedVector2Array(-80, -10, 80, -10, 80, 10, -80, 10)
+polygon = PackedVector2Array(-75, -10, 75, -10, 75, 10, -75, 10)
 
-[node name="Platform5" type="StaticBody2D" parent="." unique_id=255998403]
-position = Vector2(675, 533)
-collision_mask = 0
+[node name="Coin1" parent="." unique_id=501205804 instance=ExtResource("2_q12u6")]
+position = Vector2(280, 514)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform5" unique_id=1050649942]
-shape = SubResource("RectangleShape2D_htlxk")
+[node name="Coin2" parent="." unique_id=118198051 instance=ExtResource("2_q12u6")]
+position = Vector2(560, 400)
 
-[node name="Visual" type="Polygon2D" parent="Platform5" unique_id=99993383]
-color = Color(7.70092e-07, 0.57925713, 0.5857518, 1)
-polygon = PackedVector2Array(-80, -10, 80, -10, 80, 10, -80, 10)
+[node name="Coin3" parent="." unique_id=1690831645 instance=ExtResource("2_q12u6")]
+position = Vector2(650, 300)
 
-[node name="Coin1" parent="." unique_id=52723625 instance=ExtResource("2_q12u6")]
-position = Vector2(1152, 314)
+[node name="Coin4" parent="." unique_id=2047956373 instance=ExtResource("2_q12u6")]
+position = Vector2(1010, 134)
 
-[node name="Coin2" parent="." unique_id=2144373522 instance=ExtResource("2_q12u6")]
-position = Vector2(634, 274)
-
-[node name="Coin3" parent="." unique_id=358485275 instance=ExtResource("2_q12u6")]
-position = Vector2(676, 486)
-
-[node name="Coin4" parent="." unique_id=262296398 instance=ExtResource("2_q12u6")]
-position = Vector2(961, 377)
-
-[node name="Gem" parent="." unique_id=1257390529 instance=ExtResource("2_q12u6")]
+[node name="Gem" parent="." unique_id=1308887484 instance=ExtResource("2_q12u6")]
 modulate = Color(0.10980392, 0.654902, 0.9843137, 1)
-position = Vector2(890, 142)
+position = Vector2(840, 196)
 Type = 1
 
-[node name="Key" parent="." unique_id=1826674637 instance=ExtResource("2_q12u6")]
+[node name="Key" parent="." unique_id=1905418802 instance=ExtResource("2_q12u6")]
 modulate = Color(1, 0.22352941, 0, 1)
-position = Vector2(1185, 60)
+position = Vector2(1165, 100)
 Type = 2
+
+[node name="Finish" type="Area2D" parent="." unique_id=2054806393]
+position = Vector2(1216, 590)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish" unique_id=1076370001]
+shape = SubResource("Shape_door")
+
+[node name="Visual" type="Polygon2D" parent="Finish" unique_id=1122611754]
+color = Color(0.46666667, 1, 0, 1)
+polygon = PackedVector2Array(-24, -50, 24, -50, 24, 50, -24, 50)
+
+[node name="Spike01" parent="." unique_id=1653703835 instance=ExtResource("3_spike")]
+position = Vector2(188, 626)
+
+[node name="Spike02" parent="." unique_id=1027559533 instance=ExtResource("3_spike")]
+position = Vector2(220, 626)
+
+[node name="Spike03" parent="." unique_id=1090920136 instance=ExtResource("3_spike")]
+position = Vector2(252, 626)
+
+[node name="Spike04" parent="." unique_id=1711673055 instance=ExtResource("3_spike")]
+position = Vector2(284, 626)
+
+[node name="Spike05" parent="." unique_id=2067894722 instance=ExtResource("3_spike")]
+position = Vector2(316, 626)
+
+[node name="Spike06" parent="." unique_id=363306354 instance=ExtResource("3_spike")]
+position = Vector2(348, 626)
+
+[node name="Spike07" parent="." unique_id=664632015 instance=ExtResource("3_spike")]
+position = Vector2(380, 626)
+
+[node name="Spike08" parent="." unique_id=1593507573 instance=ExtResource("3_spike")]
+position = Vector2(412, 626)
+
+[node name="Spike09" parent="." unique_id=2017059251 instance=ExtResource("3_spike")]
+position = Vector2(444, 626)
+
+[node name="Spike10" parent="." unique_id=1417322049 instance=ExtResource("3_spike")]
+position = Vector2(476, 626)
+
+[node name="Spike11" parent="." unique_id=617568160 instance=ExtResource("3_spike")]
+position = Vector2(508, 626)
+
+[node name="Spike12" parent="." unique_id=49049780 instance=ExtResource("3_spike")]
+position = Vector2(540, 626)
+
+[node name="Spike13" parent="." unique_id=2031670732 instance=ExtResource("3_spike")]
+position = Vector2(572, 626)
+
+[node name="Spike14" parent="." unique_id=626023347 instance=ExtResource("3_spike")]
+position = Vector2(604, 626)
+
+[node name="Spike15" parent="." unique_id=485569977 instance=ExtResource("3_spike")]
+position = Vector2(636, 626)
+
+[node name="Spike16" parent="." unique_id=1631758402 instance=ExtResource("3_spike")]
+position = Vector2(668, 626)
+
+[node name="Spike17" parent="." unique_id=1282554787 instance=ExtResource("3_spike")]
+position = Vector2(700, 626)
+
+[node name="Spike18" parent="." unique_id=1652090745 instance=ExtResource("3_spike")]
+position = Vector2(732, 626)
+
+[node name="Spike19" parent="." unique_id=536653316 instance=ExtResource("3_spike")]
+position = Vector2(764, 626)
+
+[node name="Spike20" parent="." unique_id=1146060611 instance=ExtResource("3_spike")]
+position = Vector2(796, 626)
+
+[node name="Spike21" parent="." unique_id=635541411 instance=ExtResource("3_spike")]
+position = Vector2(828, 626)
+
+[node name="Spike22" parent="." unique_id=269881017 instance=ExtResource("3_spike")]
+position = Vector2(860, 626)
+
+[node name="Spike23" parent="." unique_id=1146587912 instance=ExtResource("3_spike")]
+position = Vector2(892, 626)
+
+[node name="Spike24" parent="." unique_id=1931077691 instance=ExtResource("3_spike")]
+position = Vector2(924, 626)
+
+[node name="Spike25" parent="." unique_id=502707588 instance=ExtResource("3_spike")]
+position = Vector2(956, 626)
+
+[node name="Spike26" parent="." unique_id=1801767287 instance=ExtResource("3_spike")]
+position = Vector2(988, 626)
+
+[node name="Spike27" parent="." unique_id=363709460 instance=ExtResource("3_spike")]
+position = Vector2(1020, 626)
+
+[node name="Spike28" parent="." unique_id=1158336933 instance=ExtResource("3_spike")]
+position = Vector2(1052, 626)
+
+[node name="Spike29" parent="." unique_id=2087201651 instance=ExtResource("3_spike")]
+position = Vector2(1084, 626)
+
+[node name="Spike30" parent="." unique_id=149264116 instance=ExtResource("3_spike")]
+position = Vector2(1116, 626)
+
+[node name="Spike31" parent="." unique_id=409762476 instance=ExtResource("3_spike")]
+position = Vector2(1148, 626)
+
+[node name="Spike32" parent="." unique_id=1073018454 instance=ExtResource("3_spike")]
+position = Vector2(650, 362)
+
+[node name="Spike33" parent="." unique_id=701786942 instance=ExtResource("3_spike")]
+position = Vector2(824, 276)
+
+[node name="Spike34" parent="." unique_id=1481754059 instance=ExtResource("3_spike")]
+position = Vector2(856, 276)
+
+[node name="Spike35" parent="." unique_id=2141486269 instance=ExtResource("3_spike")]
+position = Vector2(1010, 190)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=458528349]
+
+[node name="Instructions" type="Label" parent="HUD" unique_id=2019751328]
+offset_left = 46.0
+offset_top = 40.0
+offset_right = 1286.0
+offset_bottom = 88.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
+text = "Pārbaude"
+autowrap_mode = 3
+
+[node name="Status" type="Label" parent="HUD" unique_id=889406032]
+offset_left = 46.0
+offset_top = 72.0
+offset_right = 1286.0
+offset_bottom = 120.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
+text = "Pārbaude"
+autowrap_mode = 3
+
+[node name="Message" type="Label" parent="HUD" unique_id=1281119447]
+offset_left = 46.0
+offset_top = 104.0
+offset_right = 1286.0
+offset_bottom = 152.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
+text = "Pārbaude"
+autowrap_mode = 3
